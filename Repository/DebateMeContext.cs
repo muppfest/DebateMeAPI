@@ -9,6 +9,10 @@ namespace DebateMeAPI.Repository
 {
     public class DebateMeContext : DbContext
     {
+        public DebateMeContext(DbContextOptions options) : base (options)
+        {
+        }
+
         DbSet<User> Users { get; set; }
         DbSet<Room> Rooms { get; set; }
         DbSet<Message> Messages { get; set; }

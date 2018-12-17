@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace DebateMeAPI.Repository
     {
         private readonly DebateMeContext _db;
 
-        public Repository()
+        public Repository(DebateMeContext dbContext)
         {
-            _db = new DebateMeContext();
+            _db = dbContext;
         }
 
         public void Delete(int id)
