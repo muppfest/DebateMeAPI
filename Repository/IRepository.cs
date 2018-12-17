@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DebateMeAPI.Repository
 {
-    interface IRepository<T>
+    public interface IRepository<T>
     {
         T GetById(int id);
         List<T> GetAll();

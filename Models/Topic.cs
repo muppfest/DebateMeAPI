@@ -16,7 +16,6 @@ namespace DebateMeAPI.Models
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
-        [InverseProperty("Topic")]
         public List<Question> Questions { get; set; }
     }
 }

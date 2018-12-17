@@ -12,3 +12,4 @@ C:\Users\MarcusKontor\Source\repos\DebateMeAPI\DebateMeAPI\obj\Debug\netcoreapp2
 C:\Users\MarcusKontor\Source\repos\DebateMeAPI\DebateMeAPI\obj\Debug\netcoreapp2.1\DebateMeAPI.dll
 C:\Users\MarcusKontor\Source\repos\DebateMeAPI\DebateMeAPI\obj\Debug\netcoreapp2.1\DebateMeAPI.pdb
 C:\Users\MarcusKontor\Source\repos\DebateMeAPI\DebateMeAPI\obj\Debug\netcoreapp2.1\DebateMeAPI.csprojAssemblyReference.cache
+C:\Users\MarcusKontor\Source\repos\DebateMeAPI\DebateMeAPI\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

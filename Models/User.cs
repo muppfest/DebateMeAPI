@@ -25,7 +25,6 @@ namespace DebateMeAPI.Models
         public string WebDeviceId { get; set; }
 
         public List<Room> Room { get; set; }
-        [InverseProperty("User")]
         public List<Message> Messages { get; set; }
     }
 }
