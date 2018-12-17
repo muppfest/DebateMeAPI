@@ -25,8 +25,8 @@ namespace DebateMeAPI.Models
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
         [ForeignKey("FirstUserId")]
-        public User FirstPlayer { get; set; }
+        public User FirstUser { get; set; }
         [ForeignKey("SecondUserId")]
-        public User SecondPlayer { get; set; }
+        public User SecondUser { get; set; }
     }
 }
