@@ -11,25 +11,25 @@ namespace DebateMeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class QuestionController : ControllerBase
     {
-        private IRepository<User> repoUser;
+        private IRepository<Question> repoQuestion;
 
-        public UserController(IRepository<User> repoUser)
+        public QuestionController(IRepository<Question> repoQuestion)
         {
-            this.repoUser = repoUser;
+            this.repoQuestion = repoQuestion;
         }
 
         [HttpGet]
         public JsonResult Get()
         {
-            return new JsonResult(repoUser.GetAll());
+            return new JsonResult(repoQuestion.GetAll());
         }
 
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            return new JsonResult(repoUser.GetById(id));
+            return new JsonResult(repoQuestion.GetById(id));
         }
     }
 }

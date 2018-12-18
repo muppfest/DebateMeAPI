@@ -21,10 +21,16 @@ namespace DebateMeAPI.Controllers
         }
 
         [HttpGet("{RoomId}")]
-        public ActionResult<IEnumerable<Message>> Get(int roomId)
+        public JsonResult Get(int roomId)
         {
             var messages = repoMessage.GetAll().Where(w => w.RoomId == roomId).ToList();
-            return messages;
+            return new JsonResult(messages);
+        }
+
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+
         }
     }
 }

@@ -24,7 +24,9 @@ namespace DebateMeAPI.Models
         public Topic Topic { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
-       
+        [InverseProperty("Room")]
+        public List<Message> Messages { get; set; }
+
         [NotMapped]
         public User FirstUser { get; set; }
         [NotMapped]
