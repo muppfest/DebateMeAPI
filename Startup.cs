@@ -32,9 +32,10 @@ namespace DebateMeAPI
             services.AddMvc();
             services.AddDbContext<DebateMeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DebateMeDatabase")));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IRoomRepository<>), typeof(RoomRepository<>));
+            services.AddScoped(typeof(IRoomRepository), typeof(RoomRepository));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             services.AddScoped<DbContext, DebateMeContext>();
-
+            services.AddSession();
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
@@ -52,6 +53,7 @@ namespace DebateMeAPI
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseMvc();
         }

@@ -14,9 +14,9 @@ namespace DebateMeAPI.Controllers
     [ApiController]
     public class RoomController : ControllerBase
     {
-        private IRoomRepository<Room> repoRoom;
+        private IRoomRepository repoRoom;
 
-        public RoomController(IRoomRepository<Room> repoRoom)
+        public RoomController(IRoomRepository repoRoom)
         {
             this.repoRoom = repoRoom;
         }

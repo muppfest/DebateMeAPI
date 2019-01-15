@@ -27,6 +27,11 @@ namespace DebateMeAPI.Repository
                 {
                     CategoryId = 1,
                     Name = "IT/Data"
+                },
+                new Category
+                {
+                    CategoryId = 2,
+                    Name = "Ekonomi"
                 }
             );
 
@@ -34,7 +39,26 @@ namespace DebateMeAPI.Repository
                 new Topic
                 {
                     TopicId = 1,
+                    CategoryId =1,
                     Name = "GDPR"
+                },
+                new Topic
+                {
+                    TopicId = 2,
+                    CategoryId = 1,
+                    Name = "Fildelning"
+                },
+                new Topic
+                {
+                    TopicId = 3,
+                    CategoryId = 2,
+                    Name = "Skatter"
+                },
+                new Topic
+                {
+                    TopicId = 4,
+                    CategoryId = 2,
+                    Name = "Bensinpriser"
                 }
             );
 

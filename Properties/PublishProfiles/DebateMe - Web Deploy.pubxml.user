@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjfWlYHJpdkaPWqXI0rXB5AAAAAACAAAAAAAQZgAAAAEAACAAAAC5+F5VuWT9zRbSMKPP1rrS7GWDvcd/394aOfX1N6d9hAAAAAAOgAAAAAIAACAAAADWCISgwypfcfKT8aScgYeXBIsTQM5KRl17wmdbWvnFS4AAAABz1iq82CP00Ru25pt7hXKY1BV4qeXHbHnptApJ0GpAvvxYEZfnt3HnMssGQdj4cMobHHoN8RGMt7b4LAsFjQPOiZ806p/5L95ZGgHwLS4IF8B1nrq85heI+gitB5+ql+2vEhFWyCjiIuZiPiWTNyS19eLpvyF3a8NJIuH2eIr1EUAAAAC4Q5lvdJmucE6OhLpGxXEdqO78o1ikavjwBrmMeOxCfxrGU4VE56sl0C9AmXByNvY+sT8zkkG4h7PHjBpPc3hi</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <AzureDBConnectionStrings Include="Data Source=tcp:debatemedbserver.database.windows.net,1433;Initial Catalog=DebateMe;User ID=debatemeapi;Password=!DebateMe" />
+    <AzureDBConnectionStrings Include="Data Source=tcp:debatemedbserver.database.windows.net,1433;Initial Catalog=DebateMe;User Id=debatemeapi@debatemedbserver;Password=!DebateMe" />
+  </ItemGroup>
+</Project>

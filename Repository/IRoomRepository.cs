@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DebateMeAPI.Repository
 {
-    public interface IRoomRepository<T> : IRepository<T>
+    public interface IRoomRepository : IRepository<Room>
     {
         string GetRoomName(int id);
         UserViewModel GetUser(int userId);
@@ -17,5 +17,6 @@ namespace DebateMeAPI.Repository
         bool IsFirstUser(int userId);
         bool IsFirstUserTurn(int id);
         string GetUserName(int userId);
+        int UserTurnId(int roomId);
     }
 }

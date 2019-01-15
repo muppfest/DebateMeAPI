@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace DebateMeAPI.Repository
 {
-    public interface IUserRepository<T> : IRepository<T>
+    public interface IUserRepository : IRepository<User>
     {
-        void Login(User user);
+        bool Login(string email, string password);
         void Register(User user);
+        int GetIdByEmail(string email);
+        bool EmailExist(string email);
+        bool PhoneNumberExist(string phoneNumber);
+        string GetEmailById(int id);
     }
 }

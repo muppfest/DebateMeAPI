@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DebateMeAPI.Repository
 {
-    public class RoomRepository<T> : Repository<Room>, IRoomRepository<Room>
+    public class RoomRepository : Repository<Room>, IRoomRepository
     {
         private readonly DebateMeContext _db;
 
@@ -99,6 +99,21 @@ namespace DebateMeAPI.Repository
             }
 
             return false;
+        }
+
+        public int UserTurnId(int roomId)
+        {
+            var room = _db.Set<Room>().Find(roomId);
+            var userId = new int();
+
+            if (room.FirstUserTurn)
+            {
+                userId = room.FirstUserId;
+            } else
+            {
+                userId = room.SecondUserId;
+            }
+            return userId;
         }
     }
 }
