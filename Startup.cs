@@ -33,7 +33,7 @@ namespace DebateMeAPI
             services.AddDbContext<DebateMeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DebateMeDatabase")));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IRoomRepository), typeof(RoomRepository));
-            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));            
             services.AddScoped<DbContext, DebateMeContext>();
             services.AddSession();
             services.AddMvc().AddJsonOptions(options => {

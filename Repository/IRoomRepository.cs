@@ -9,6 +9,7 @@ namespace DebateMeAPI.Repository
 {
     public interface IRoomRepository : IRepository<Room>
     {
+        int InsertReturnId(Room room);
         string GetRoomName(int id);
         UserViewModel GetUser(int userId);
         TopicViewModel GetTopic(int id);

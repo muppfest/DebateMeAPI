@@ -115,5 +115,13 @@ namespace DebateMeAPI.Repository
             }
             return userId;
         }
+
+        public int InsertReturnId(Room room)
+        {
+            _db.Set<Room>().Add(room);
+            _db.SaveChanges();
+
+            return room.RoomId;
+        }
     }
 }

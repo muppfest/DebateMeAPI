@@ -23,8 +23,5 @@ namespace DebateMeAPI.Models
         public string AndroidDeviceId { get; set; }
         public string IosDeviceId { get; set; }
         public string WebDeviceId { get; set; }
-
-        public List<Room> Room { get; set; }
-        public List<Message> Messages { get; set; }
     }
 }

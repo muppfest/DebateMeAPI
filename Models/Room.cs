@@ -19,17 +19,5 @@ namespace DebateMeAPI.Models
         public int PostCount { get; set; }
         public int ViewerCount { get; set; }
         public bool FirstUserTurn { get; set; }
-
-        [ForeignKey("TopicId")]
-        public Topic Topic { get; set; }
-        [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
-        [InverseProperty("Room")]
-        public List<Message> Messages { get; set; }
-
-        [NotMapped]
-        public User FirstUser { get; set; }
-        [NotMapped]
-        public User SecondUser { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DebateMeAPI.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IDisposable, IRepository<T> where T : class
     {
         private readonly DebateMeContext _db;
 
@@ -45,6 +45,11 @@ namespace DebateMeAPI.Repository
         public void Update(T t)
         {
             _db.Entry(t).State = EntityState.Modified;
+        }
+
+        public void Dispose()
+        {
+            _db.Dispose();
         }
     }
 }
