@@ -36,7 +36,7 @@ namespace DebateMeAPI.Repository
                 var message = new MessageViewModel();
                 message.MessageId = item.MessageId;
                 message.Text = item.Text;
-                message.IsFirstPlayer = IsFirstUser(item.UserId);
+                message.IsFirstPlayer = IsFirstUser(item.UserId, id);
                 message.Name = GetUserName(item.UserId);
                 vm.Add(message);
             }
@@ -74,9 +74,9 @@ namespace DebateMeAPI.Repository
             return vm;
         }
 
-        public bool IsFirstUser(int userId)
+        public bool IsFirstUser(int userId, int roomId)
         {
-            if(_db.Set<Room>().Select(s => s.FirstUserId).SingleOrDefault() == userId)
+            if(_db.Set<Room>().Where(w => w.RoomId == roomId).Select(s => s.FirstUserId).SingleOrDefault() == userId)
             {
                 return true;
             }

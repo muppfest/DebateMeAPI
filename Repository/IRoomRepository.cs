@@ -15,7 +15,7 @@ namespace DebateMeAPI.Repository
         TopicViewModel GetTopic(int id);
         CategoryViewModel GetCategory(int id);
         List<MessageViewModel> GetMessages(int id);
-        bool IsFirstUser(int userId);
+        bool IsFirstUser(int userId, int roomId);
         bool IsFirstUserTurn(int id);
         string GetUserName(int userId);
         int UserTurnId(int roomId);
