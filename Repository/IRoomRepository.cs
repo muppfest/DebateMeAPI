@@ -24,5 +24,6 @@ namespace DebateMeAPI.Repository
         void IncrementViewers(int roomId);
         void IncrementPosts(int roomId);
         bool JoinDebate(int roomId, int userId);
+        List<RoomListViewModel> GetDebatesByUserId(int userId);
     }
 }

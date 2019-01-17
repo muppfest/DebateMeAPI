@@ -164,7 +164,7 @@ namespace DebateMeAPI.Repository
         {
             var room = GetById(roomId);
             
-            if(room.SecondUserId != 0)
+            if(room.SecondUserId == 0)
             {
                 room.SecondUserId = userId;
                 Update(room);
@@ -173,6 +173,27 @@ namespace DebateMeAPI.Repository
                 return true;
             }
             return false;
+        }
+
+        public List<RoomListViewModel> GetDebatesByUserId(int userId)
+        {
+            var roomListViewModels = new List<RoomListViewModel>();
+            var rooms = GetAll().Where(w => w.FirstUserId == userId || w.SecondUserId == userId).ToList();
+
+            foreach(var room in rooms)
+            {
+                var roomListViewModel = new RoomListViewModel();
+                roomListViewModel.RoomId = room.RoomId;
+                roomListViewModel.FirstUserId = room.FirstUserId;
+                roomListViewModel.SecondUserId = room.SecondUserId;
+                roomListViewModel.PostCount = room.PostCount;
+                roomListViewModel.ViewerCount = room.ViewerCount;
+                roomListViewModel.Name = GetRoomName(room.RoomId);
+
+                roomListViewModels.Add(roomListViewModel);
+            }
+
+            return roomListViewModels;
         }
     }
 }

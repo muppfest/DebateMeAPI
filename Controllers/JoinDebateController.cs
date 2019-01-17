@@ -23,6 +23,7 @@ namespace DebateMeAPI.Controllers
             this.repoUser = repoUser;
         }
 
+        [HttpPost]
         public JsonResult Post([FromBody] JObject jObject)
         {
             var response = new JoinDebateResponseViewModel();
@@ -38,6 +39,7 @@ namespace DebateMeAPI.Controllers
             {   
                 response.Success = true;
                 response.Message = "You have successfully joined the debate!";
+                
             }
             return new JsonResult(response);
         }
