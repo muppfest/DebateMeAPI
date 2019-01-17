@@ -19,5 +19,6 @@ namespace DebateMeAPI.Repository
         bool IsFirstUserTurn(int id);
         string GetUserName(int userId);
         int UserTurnId(int roomId);
+        void ChangeTurnAfterPost(int roomId);
     }
 }

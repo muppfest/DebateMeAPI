@@ -17,12 +17,20 @@ namespace DebateMeAPI.Controllers
     {
         private IRepository<Message> repoMessage;
         private IUserRepository repoUser;
-        private IRepository<Room> repoRoom;
+        private IRoomRepository repoRoom;
 
-        public MessageController(IRepository<Message> repoMessage, IUserRepository repoUser, IRepository<Room> repoRoom)
+        public MessageController(IRepository<Message> repoMessage, IUserRepository repoUser, IRoomRepository repoRoom)
         {
             this.repoMessage = repoMessage;
             this.repoUser = repoUser;
+            this.repoRoom = repoRoom;
+        }
+
+        [HttpGet]
+        public JsonResult Get()
+        {
+            var messages = repoMessage.GetAll();
+            return new JsonResult(messages);
         }
 
         [HttpGet("{RoomId}")]
@@ -33,22 +41,35 @@ namespace DebateMeAPI.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]JObject jObject)
+        public JsonResult Post([FromBody]JObject jObject)
         {
             var response = new MessageResponseViewModel();
             response.Success = false;
-            response.Message = "Message did not post.";
+            response.Message = "Message is not sent!";
 
             var token = jObject["Token"].ToString();
-            var roomId = jObject["RoomId"].ToString();
-            var text = jObject["Text"].ToString();
+            var roomId = Convert.ToInt32(jObject["RoomId"].ToString());
             var userId = Convert.ToInt32(jObject["UserId"].ToString());
-
+            var text = jObject["Text"].ToString();
             var email = repoUser.GetEmailById(userId);
+
             if(token.Equals(NETCore.Encrypt.EncryptProvider.Sha512(email)))
             {
+                var message = new Message();
+                message.UserId = userId;
+                message.RoomId = roomId;
+                message.Text = text;
 
+                repoMessage.Insert(message);
+                repoMessage.Save();
+
+                response.Success = true;
+                response.Message = "Message is sent!";
+
+                repoRoom.ChangeTurnAfterPost(roomId);
             }
+
+            return new JsonResult(response);
         }
     }
 }

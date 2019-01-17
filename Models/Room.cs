@@ -19,5 +19,7 @@ namespace DebateMeAPI.Models
         public int PostCount { get; set; }
         public int ViewerCount { get; set; }
         public bool FirstUserTurn { get; set; }
+
+        public List<Message> Messages { get; set; }
     }
 }

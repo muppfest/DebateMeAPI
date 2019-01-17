@@ -53,9 +53,12 @@ namespace DebateMeAPI.Repository
         {
             var user = _db.Set<User>().Where(w => w.UserId == userId).SingleOrDefault();
             var vm = new UserViewModel();
-            vm.FirstName = user.FirstName;
-            vm.LastName = user.LastName;
-            vm.UserId = user.UserId;
+            if (user != null)
+            {
+                vm.FirstName = user.FirstName;
+                vm.LastName = user.LastName;
+                vm.UserId = user.UserId;
+            }
 
             return vm;
         }
@@ -89,16 +92,9 @@ namespace DebateMeAPI.Repository
 
         public bool IsFirstUserTurn(int id)
         {
-            var room = _db.Set<Room>().Find(id);
-            var lastMessage = _db.Set<Message>().Where(w => w.RoomId == id).LastOrDefault();
-            var firstPlayerId = room.FirstUserId;
-
-            if(lastMessage.UserId != firstPlayerId)
-            {
-                return true;
-            }
-
-            return false;
+            var room = GetById(id);
+            if (room.FirstUserTurn == true) return true;
+            else return false;
         }
 
         public int UserTurnId(int roomId)
@@ -122,6 +118,20 @@ namespace DebateMeAPI.Repository
             _db.SaveChanges();
 
             return room.RoomId;
+        }
+
+        public void ChangeTurnAfterPost(int roomId)
+        {
+            var room = GetById(roomId);
+            if(room.FirstUserTurn)
+            {
+                room.FirstUserTurn = false;
+            } else
+            {
+                room.FirstUserTurn = true;
+            }
+            _db.Set<Room>().Update(room);
+            _db.SaveChanges();
         }
     }
 }
