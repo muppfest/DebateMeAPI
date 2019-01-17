@@ -67,6 +67,7 @@ namespace DebateMeAPI.Controllers
                 response.Message = "Message is sent!";
 
                 repoRoom.ChangeTurnAfterPost(roomId);
+                repoRoom.IncrementPosts(roomId);
             }
 
             return new JsonResult(response);

@@ -37,6 +37,8 @@ namespace DebateMeAPI.Controllers
                 room.Name = repoRoom.GetRoomName(item.RoomId);
                 room.PostCount = item.PostCount;
                 room.ViewerCount = item.ViewerCount;
+                room.FirstUserId = item.FirstUserId;
+                room.SecondUserId = item.SecondUserId;
                 vm.Add(room);
             }
 

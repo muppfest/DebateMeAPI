@@ -11,5 +11,7 @@ namespace DebateMeAPI.ViewModels
         public string Name { get; set; }
         public int ViewerCount { get; set; }
         public int PostCount { get; set; }
+        public int FirstUserId { get; set; }
+        public int SecondUserId { get; set; }
     }
 }

@@ -133,5 +133,46 @@ namespace DebateMeAPI.Repository
             _db.Set<Room>().Update(room);
             _db.SaveChanges();
         }
+
+        public void IncrementPosts(int roomId) {
+            var room = GetById(roomId);
+            room.PostCount++;
+
+            Update(room);
+            Save();
+        }
+
+        public void IncrementViewers(int roomId)
+        {
+            var room = GetById(roomId);
+            room.ViewerCount++;
+
+            Update(room);
+            Save();
+        }
+
+        public void DecrementViewers(int roomId)
+        {
+            var room = GetById(roomId);
+            room.ViewerCount--;
+
+            Update(room);
+            Save();
+        }
+
+        public bool JoinDebate(int roomId, int userId)
+        {
+            var room = GetById(roomId);
+            
+            if(room.SecondUserId != 0)
+            {
+                room.SecondUserId = userId;
+                Update(room);
+                Save();
+
+                return true;
+            }
+            return false;
+        }
     }
 }

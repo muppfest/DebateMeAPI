@@ -20,5 +20,9 @@ namespace DebateMeAPI.Repository
         string GetUserName(int userId);
         int UserTurnId(int roomId);
         void ChangeTurnAfterPost(int roomId);
+        void DecrementViewers(int roomId);
+        void IncrementViewers(int roomId);
+        void IncrementPosts(int roomId);
+        bool JoinDebate(int roomId, int userId);
     }
 }
